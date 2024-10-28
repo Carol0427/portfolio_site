@@ -69,22 +69,17 @@ export function Navbar() {
     <MTNavbar shadow={false} fullWidth className="border-0 sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between">
         <Typography color="blue-gray" className="text-lg font-bold">
-          Material Tailwind
+          Me
         </Typography>
-        <ul className="ml-10 hidden items-center gap-8 lg:flex">
-          {NAV_MENU.map(({ name, icon: Icon, href }) => (
-            <NavItem key={name} href={href}>
-              <Icon className="h-5 w-5" />
-              {name}
-            </NavItem>
-          ))}
-        </ul>
-        <div className="hidden items-center gap-2 lg:flex">
-          <Button variant="text">Sign In</Button>
-          <a href="https://www.material-tailwind.com/blocks" target="_blank">
-            <Button color="gray">blocks</Button>
-          </a>
-        </div>
+        <ul className="hidden items-center gap-8 lg:flex justify-center w-full">
+  {NAV_MENU.map(({ name, icon: Icon, href }) => (
+    <NavItem key={name} href={href}>
+      <Icon className="h-5 w-5" />
+      {name}
+    </NavItem>
+  ))}
+</ul>
+        
         <IconButton
           variant="text"
           color="gray"
