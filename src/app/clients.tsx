@@ -12,7 +12,7 @@ const CLIENTS = [
   "sqllogo",
   "mongodb_logo"
 ];
-
+//yo
 export function Clients() {
   return (
     <section className="px-8 py-28">
