@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Typography } from "@material-tailwind/react";
 //yo
+//yo
 const CLIENTS = [
   "reactlogofr",
   "nodelogofr",
