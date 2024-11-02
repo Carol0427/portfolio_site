@@ -1,15 +1,11 @@
-"use client";
-
 import { ProjectCard } from "@/components";
-import { Typography } from "@material-tailwind/react";
-
 
 const PROJECTS = [
   {
     img: "/image/retrotape.png",
     title: "AnonyVent",
     desc: "The site for anonymous venting",
-    tags: ["React", "Node", "AWS S3", "Mongo", "ChatGPT API", "Assembly AI API", , "Netlify", "Heroku"],
+    tags: ["React", "Node", "AWS S3", "Mongo", "ChatGPT API", "Assembly AI API", "Netlify", "Heroku"],
   },
   {
     img: "/image/leafsafe.png",
@@ -35,9 +31,9 @@ export function Projects() {
   return (
     <section className="py-28 px-8">
       <div className="container mx-auto mb-20 text-center">
-        <Typography variant="h2" color="blue-gray" className="mb-4">
+        <h2 className="text-4xl font-bold text-gray-800 mb-4">
           Projects
-        </Typography>
+        </h2>
       </div>
       <div className="container mx-auto grid grid-cols-1 gap-x-10 gap-y-20 md:grid-cols-2 xl:grid-cols-4">
         {PROJECTS.map((props, idx) => (

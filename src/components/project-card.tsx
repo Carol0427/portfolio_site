@@ -1,25 +1,4 @@
 import Image from "next/image";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
-
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
-
-const OutlinedBox = styled(Box)(({ theme }) => ({
-  border: `1px solid black`,
-  padding: '6px 12px', // Adjust padding to make it look like a button
-  borderRadius: '4px', // Optional: match the button's border radius
-  display: 'inline-block',
-  alignItems: 'center',
-  justifyContent: 'center',
-  cursor: 'pointer', // Optional: change cursor to pointer
-  margin: '4px',
-}));
 
 interface ProjectCardProps {
   img: string;
@@ -30,19 +9,21 @@ interface ProjectCardProps {
 
 export function ProjectCard({ img, title, desc, tags = [] }: ProjectCardProps) {
   const handleClick = () => {
-    if(title == "AnonyVent"){
-    window.open('https://anonyvent.xyz', '_blank');
+    const projectLinks: Record<string, string> = {
+      "AnonyVent": "https://anonyvent.xyz",
+      "LeafSafe": "https://leafsafe.xyz",
+      "FixItFund": "https://fixitfund.site"
+    };
+    
+    if (title in projectLinks) {
+      window.open(projectLinks[title], '_blank');
     }
-    else if(title == "LeafSafe"){
-      window.open('https://leafsafe.xyz', '_blank');
-      }
-      else if(title == "FixItFund"){
-        window.open('https://fixitfund.site', '_blank');
-        }
   };
+
   return (
-    <Card color="transparent" shadow={false}>
-      <CardHeader floated={false} className="mx-0 mt-0 mb-6 h-48">
+    <div className="overflow-hidden rounded-xl bg-white transition-shadow hover:shadow-md">
+      {/* Card Header */}
+      <div className="mb-6 h-48 overflow-hidden">
         <Image
           src={img}
           alt={title}
@@ -50,34 +31,47 @@ export function ProjectCard({ img, title, desc, tags = [] }: ProjectCardProps) {
           height={768}
           className="h-full w-full object-cover"
         />
-      </CardHeader>
-      <CardBody className="p-0">
+      </div>
+
+      {/* Card Body */}
+      <div className="p-6">
         <a
           href="#"
-          className="text-blue-gray-900 transition-colors hover:text-gray-800"
+          className="text-gray-900 transition-colors hover:text-gray-800"
         >
-          <Typography variant="h5" className="mb-2">
+          <h5 className="mb-2 text-xl font-semibold">
             {title}
-          </Typography>
+          </h5>
         </a>
-        <Typography className="mb-6 font-normal !text-gray-500">
+        <p className="mb-6 font-normal text-gray-500">
           {desc}
-        </Typography>
-        <div style={{ display: 'flex', flexWrap: 'wrap' }}> {/* Optional: Flexbox for better layout */}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2">
           {tags.map((tag, index) => (
-            <OutlinedBox key={index}>
+            <span
+              key={index}
+              className="inline-flex cursor-pointer items-center justify-center rounded border border-black px-3 py-1 text-sm"
+            >
               {tag}
-            </OutlinedBox>
+            </span>
           ))}
         </div>
-      <br></br>
-      <br></br>
-        <Button color="gray" size="sm" onClick={handleClick}>
+
+        {/* Spacing */}
+        <div className="mt-6"></div>
+
+        {/* Button */}
+        <button
+          onClick={handleClick}
+          className="rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800"
+        >
           Try it out!
-        </Button>
-        
-      </CardBody>
-    </Card>
+        </button>
+      </div>
+    </div>
+    
   );
 }
 
